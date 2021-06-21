@@ -9,7 +9,7 @@ const SecondHeader = () => {
 
             <h1 style={{ fontFamily: 'monospace', fontWeight: '800' }} className='text-center  pt-5'>Welcome to our new website <br></br> Find Your Job From Here!!!</h1>
 
-            <div class="wrap">
+             <div class="wrap">
                 <div class="search">
                     <input type="text" class="searchTerm" placeholder="What are you looking for?" />
                     <button type="submit" class="searchButton">
@@ -19,7 +19,10 @@ const SecondHeader = () => {
             </div>
 
 
+
+           
         </div>
+
     );
 };
 

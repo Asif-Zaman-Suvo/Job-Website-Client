@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 import  { Navbar , Nav ,Form ,Button} from 'react-bootstrap';
 import logo from '../../Resource/logo.jpg';
+import {Link}  from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -18,8 +19,8 @@ const Header = () => {
                    
                 </Nav>
                 <Form inline >                  
-                    <Button className='mr-3' variant="primary">Create An Account</Button>
-                   
+                   <Link to ='/accountOpen'> <Button className='Button' variant="success">Create An Account</Button></Link>
+                 
                 </Form>
                 
             </Navbar.Collapse>

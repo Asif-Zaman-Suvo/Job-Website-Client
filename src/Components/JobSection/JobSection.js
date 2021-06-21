@@ -10,6 +10,7 @@ const JobSection = ({job}) => {
                     <Card.Img variant="top" style={{ height: '18em', borderRadius: 'none' }} src={job.img} />
                     <Card.Body className="text-center">
                         <h6 className="text-dark">{job.name}</h6>
+                        <button>Apply</button>
                     </Card.Body>
                 </Card>
             </Link>
