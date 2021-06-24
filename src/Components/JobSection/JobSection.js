@@ -1,19 +1,30 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { Card } from 'react-bootstrap';
-import { Link, } from 'react-router-dom';
+
 
 const JobSection = ({job}) => {
+    
+   
+      const [disable, setDisable]=useState(false);
+
+    
+    
     return (
         <div className="col-md-3 pt-5">
-            <Link style={{ textDecoration: 'none' }} to={`/job/${job.name}`}>
+           
                 <Card style={{ width: '15em' }}>
                     <Card.Img variant="top" style={{ height: '18em', borderRadius: 'none' }} src={job.img} />
                     <Card.Body className="text-center">
-                        <h6 className="text-dark">{job.name}</h6>
-                        <button>Apply</button>
+                       
+                        <h5 className='text-dark'>{job.JobType}</h5>
+                        <h5 className='text-dark'>{job.CompanyName}</h5>
+                        <h6 className="text-dark">{job.Name}</h6>
+
+                        <button disabled={disable} onClick={() => setDisable(true)}>Apply</button>
                     </Card.Body>
                 </Card>
-            </Link>
+
+               
 
         </div>
     );

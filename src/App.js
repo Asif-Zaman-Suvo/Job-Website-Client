@@ -6,8 +6,7 @@ import OpenAccountPage from './Components/OpenAccountPage/OpenAccountPage';
 import JobSeekerAccount from './Components/JobSeekerAccount/JobSeekerAccount';
 import EmployeeAccount from './Components/EmployeeAccount/EmployeeAccount';
 import EmployeeAccountInfo from './Components/EmployeeAccountInfo/EmployeeAccountInfo';
-
-
+import EmployeeDashboard from './Components/EmployeeDashboard/EmployeeDashboard';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,48 +14,76 @@ import {
   Link
 } from "react-router-dom";
 import Payment from './Components/Payment/Payment';
+import PostJob from './Components/PostJob/PostJob';
+import { createContext, useState } from 'react';
+import ProtectedRoute from './Components/Login/ProtectedRoute';
+import Login from './Components/Login/Login';
+
+export const UserContext = createContext();
+
 
 function App() {
+
+  const [loggedInUser, setLoggedInUser] = useState({});
+  
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/'>
-          
-          <SecondHeader></SecondHeader>
-          <JobUi></JobUi>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <Router>
+        <Switch>
+          <Route exact path='/'>
 
-        </Route>
+            <SecondHeader></SecondHeader>
+            <JobUi></JobUi>
 
-        <Route  path='/accountOpen'>
-        <OpenAccountPage></OpenAccountPage>
+          </Route>
 
-        </Route>
+          <Route path='/accountOpen'>
+            <OpenAccountPage></OpenAccountPage>
 
-        <Route path='/jobSeekerAccount'>
-          <JobSeekerAccount></JobSeekerAccount>
+          </Route>
 
-        </Route>
+          <ProtectedRoute path='/jobSeekerAccount'>
+            <JobSeekerAccount></JobSeekerAccount>
 
-        <Route path='/employeeAccount'>
-          <EmployeeAccount></EmployeeAccount>
+          </ProtectedRoute>
 
-        </Route>
+          <ProtectedRoute path='/employeeAccount'>
+            <EmployeeAccount></EmployeeAccount>
 
-        <Route path='/accountInfo'>
-          <EmployeeAccountInfo></EmployeeAccountInfo>
+          </ProtectedRoute>
 
-        </Route>
+          <Route path='/accountInfo'>
+            <EmployeeAccountInfo></EmployeeAccountInfo>
 
-        <Route path='/payment'>
-          <Payment></Payment>
+          </Route>
 
-        </Route>
+          <Route path='/payment'>
+            <Payment></Payment>
 
-       
-      </Switch>
+          </Route>
 
-    </Router>
-    
+          <Route path='/employeeDashboard'>
+            <EmployeeDashboard></EmployeeDashboard>
+
+          </Route>
+
+          <Route path='/addJob'>
+            <PostJob></PostJob>
+
+
+          </Route>
+
+          <Route path='/login'>
+            <Login></Login>
+            
+            </Route> 
+
+
+        </Switch>
+
+      </Router>
+    </UserContext.Provider>
+
   );
 }
 

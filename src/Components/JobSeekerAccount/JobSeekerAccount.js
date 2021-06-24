@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
-import { Link,useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { UserContext } from '../../App';
 import logo from '../../Resource/logo.jpg';
 import './JobSeekerAccount.css';
 
 const JobSeekerAccount = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     const {
         register,
@@ -23,8 +25,6 @@ const JobSeekerAccount = () => {
             <Link to="/">
                 <img style={{ marginLeft: '40%' }} src={logo} alt="" width="150px" />
             </Link>
-
-
             <div style={{ width: '550px', height: "450px", top: '50px', left: '265px' }} className="card text-center registrationForm">
 
                 <div className="card-body">
@@ -43,9 +43,9 @@ const JobSeekerAccount = () => {
                                         message: "Max length is 25"
                                     }
                                 })}
-                                defaultValue={''}
+                                defaultValue={loggedInUser.name}
                             />
-                           
+
                         </div>
                         <div className='form-group'>
                             <input
@@ -53,11 +53,11 @@ const JobSeekerAccount = () => {
                                 type="text"
                                 {...register("email", {
                                     required: "this is required",
-                                   
+
                                 })}
-                                defaultValue={''}
+                                defaultValue={loggedInUser.email}
                             />
-                          
+
                         </div>
 
 
@@ -66,30 +66,30 @@ const JobSeekerAccount = () => {
                                 placeholder="Date"
                                 {...register("date", {
                                     required: "this is required",
-                                    
+
                                 })}
                             />
-                            
+
                         </div>
-                        
+
                         <div className='form-group'>
                             <input type='text'
                                 placeholder="Interested Job"
                                 {...register("Interested Job", {
                                     required: "this is a required",
-                                    
+
                                 })}
 
                                 defaultValue={''}
                             />
-                           
+
                         </div>
 
 
-                        
-                        <Link to='/'><input type="submit" /></Link>
+
+                        <input type="submit" />
                     </form>
-                   
+
                 </div>
 
 
@@ -98,7 +98,7 @@ const JobSeekerAccount = () => {
 
         </div>
 
-       
+
 
     );
 };
