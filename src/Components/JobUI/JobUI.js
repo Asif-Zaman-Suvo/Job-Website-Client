@@ -9,7 +9,7 @@ const JobUI = () => {
     const [loggedInUser,setLoggedInUser]=useContext(UserContext)
 
     useEffect(()=>{
-        fetch ('http://localhost:5000/jobs?email='+loggedInUser.email)
+        fetch ('https://nameless-falls-77652.herokuapp.com/jobs?email='+loggedInUser.email)
         .then(res=>res.json())
         .then(data=>setAddJob(data));
        

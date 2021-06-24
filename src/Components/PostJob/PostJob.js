@@ -16,7 +16,7 @@ const PostJob = () => {
     });
     const onSubmit = (data) => {
        
-        fetch('http://localhost:5000/addJob',{
+        fetch('https://nameless-falls-77652.herokuapp.com/addJob',{
             method: 'POST',
             headers:{ 'Content-Type': 'application/json'},
             body:JSON.stringify(data)
